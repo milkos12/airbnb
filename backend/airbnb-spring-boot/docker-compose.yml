@@ -1,0 +1,28 @@
+services:
+  airbnb_app:
+    container_name: airbnb_app
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./target:/app
+    depends_on:
+      - airbnb_db
+    environment:
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+  airbnb_db:
+    container_name: airbnb_db
+    image: postgres
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres_volumen:/var/lib/postgresql/airbnbdata
+volumes:
+  postgres_volumen:
+
