@@ -17,7 +17,7 @@ import java.util.Calendar;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long user_id;
 
     @Column(name = "first_name", nullable = false, length = 100)
     private String firstName;
