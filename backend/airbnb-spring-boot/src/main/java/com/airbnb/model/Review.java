@@ -1,0 +1,34 @@
+package com.airbnb.model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name="reviews")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class Review {
+    @Id
+    @GeneratedValue(name = "review_id", strategy = Generate.IDENTITY)
+    private Long review_id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @Column(name = "comments", nullable = false, length = 1000)
+    private String comments;
+
+    @Column(name = "stars", nullable = false)
+    private int stars;
+
+    @ManyToOne
+    @JoinColumn(name = "id_house", nullable = false)
+    private House house;
+}
