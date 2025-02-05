@@ -7,16 +7,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="hauses")
+@Table(name="houses")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Hause {
+public class House {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long hause_id;
+    private Long house_id;
 
     @Column(name = "name", nullable = false, length = 100)
     private String name;
@@ -47,8 +47,8 @@ public class Hause {
     private String coordinates;
 
     @ElementCollection
-    @Column(name = "phothos")
-    private List<String> phothos;
+    @Column(name = "photos")
+    private List<String> photos;
 
     @Column(name = "full_address", nullable = false, length = 100)
     private String fullAddress;
