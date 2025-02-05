@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.List;
 
 @Entity
 @Table(name="houses")
@@ -16,13 +17,14 @@ import lombok.Setter;
 public class House {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long house_id;
+    @Column(name = "houseId")
+    private Long houseId;
 
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "userId", nullable = false)
     private User user;
 
     @Column(name = "guests", nullable = false)
@@ -31,8 +33,8 @@ public class House {
     @Column(name = "rooms", nullable = false)
     private int rooms;
 
-    @Column(name = "bets", nullable = false)
-    private int bets;
+    @Column(name = "beds", nullable = false)
+    private int beds;
 
     @Column(name = "bathrooms", nullable = false)
     private int bathrooms;
@@ -50,7 +52,7 @@ public class House {
     @Column(name = "photos")
     private List<String> photos;
 
-    @Column(name = "full_address", nullable = false, length = 100)
+    @Column(name = "fullAddress", nullable = false, length = 100)
     private String fullAddress;
 
 }

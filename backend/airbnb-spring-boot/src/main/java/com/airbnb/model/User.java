@@ -5,8 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -17,18 +18,19 @@ import java.util.Calendar;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    @Column(name = "userId")
+    private Long userId;
 
-    @Column(name = "first_name", nullable = false, length = 100)
+    @Column(name = "firstName", nullable = false, length = 100)
     private String firstName;
 
-    @Column(name = "last_name", nullable = false, length = 100)
+    @Column(name = "lastName", nullable = false, length = 100)
     private String lastName;
 
-    @Column(unique = true, length = 150)
+    @Column(name = "email" unique = true, length = 150)
     private String email;
 
-    @Column(name = "phone_number", nullable = false, length = 15)
+    @Column(name = "phoneNumber", nullable = false, length = 15)
     private String phoneNumber;
 
     @Column(nullable = false, length = 35)
@@ -37,14 +39,14 @@ public class User {
     @Column(nullable = false, length = 35)
     private String city;
 
-    @Column(name = "born_date", nullable = false, length = 10)
+    @Column(name = "bornDate", nullable = false, length = 10)
     @Temporal(TemporalType.DATE)
     private Calendar bornDate;
 
-    @Column(name = "profile_photo")
+    @Column(name = "profilePhoto")
     private String profilePhoto;
 
-    @Column(name = "password_hash", nullable = false)
+    @Column(name = "passwordHash", nullable = false)
     private String passwordHash;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
