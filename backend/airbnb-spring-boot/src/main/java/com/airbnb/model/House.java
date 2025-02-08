@@ -17,14 +17,14 @@ import java.util.List;
 public class House {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "houseId")
+    @Column(name = "house_id")
     private Long houseId;
 
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Column(name = "guests", nullable = false)
@@ -52,7 +52,7 @@ public class House {
     @Column(name = "photos")
     private List<String> photos;
 
-    @Column(name = "fullAddress", nullable = false, length = 100)
+    @Column(name = "full_address", nullable = false, length = 100)
     private String fullAddress;
 
 }

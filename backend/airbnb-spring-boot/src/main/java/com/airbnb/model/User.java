@@ -18,35 +18,35 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userId")
+    @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "firstName", nullable = false, length = 100)
+    @Column(name = "first_name", nullable = false, length = 100)
     private String firstName;
 
-    @Column(name = "lastName", nullable = false, length = 100)
+    @Column(name = "last_name", nullable = false, length = 100)
     private String lastName;
 
     @Column(name = "email" unique = true, length = 150)
     private String email;
 
-    @Column(name = "phoneNumber", nullable = false, length = 15)
+    @Column(name = "phone_number", nullable = false, length = 15)
     private String phoneNumber;
 
-    @Column(nullable = false, length = 35)
+    @Column(name = "country", nullable = false, length = 35)
     private String country;
 
-    @Column(nullable = false, length = 35)
+    @Column(name = "city", nullable = false, length = 35)
     private String city;
 
-    @Column(name = "bornDate", nullable = false, length = 10)
+    @Column(name = "born_date", nullable = false, length = 10)
     @Temporal(TemporalType.DATE)
     private Calendar bornDate;
 
-    @Column(name = "profilePhoto")
+    @Column(name = "profile_photo")
     private String profilePhoto;
 
-    @Column(name = "passwordHash", nullable = false)
+    @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)

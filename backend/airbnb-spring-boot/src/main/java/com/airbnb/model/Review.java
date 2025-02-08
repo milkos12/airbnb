@@ -16,11 +16,11 @@ import lombok.Setter;
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "reviewId")
+    @Column(name = "review_id")
     private Long reviewId;
 
     @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Column(name = "comments", nullable = false, length = 1000)
@@ -30,6 +30,6 @@ public class Review {
     private int stars;
 
     @ManyToOne
-    @JoinColumn(name = "idHouse", nullable = false)
+    @JoinColumn(name = "id_house", nullable = false)
     private House house;
 }
