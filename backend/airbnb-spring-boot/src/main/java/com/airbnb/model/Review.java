@@ -15,8 +15,9 @@ import lombok.Setter;
 
 public class Review {
     @Id
-    @GeneratedValue(name = "review_id", strategy = Generate.IDENTITY)
-    private Long review_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "review_id")
+    private Long reviewId;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
