@@ -55,4 +55,6 @@ public class House {
     @Column(name = "full_address", nullable = false, length = 100)
     private String fullAddress;
 
+    @OneToMany(mappedBy = "house", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<IncludedService> includedServices;
 }
