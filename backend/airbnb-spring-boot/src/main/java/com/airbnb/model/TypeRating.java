@@ -34,4 +34,7 @@ public class TypeRating {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, name = "updated_at")
     private Calendar updatedAt;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "typeRating", orphanRemoval = true)
+    private Rating rating;
 }
