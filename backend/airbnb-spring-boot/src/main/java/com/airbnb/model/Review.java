@@ -29,4 +29,7 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "id_house", nullable = false)
     private House house;
+
+    @OneToOne(mappedBy = "review", orphanRemoval = true, cascade = CascadeType.ALL)
+    private Rating rating;
 }
