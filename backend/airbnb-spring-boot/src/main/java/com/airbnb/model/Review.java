@@ -26,10 +26,10 @@ public class Review {
     @Column(name = "comments", nullable = false, length = 1000)
     private String comments;
 
-    @Column(name = "stars", nullable = false)
-    private int stars;
-
     @ManyToOne
     @JoinColumn(name = "id_house", nullable = false)
     private House house;
+
+    @OneToOne(mappedBy = "review", orphanRemoval = true, cascade = CascadeType.ALL)
+    private Rating rating;
 }
