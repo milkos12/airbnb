@@ -55,4 +55,6 @@ public class House {
     @Column(name = "full_address", nullable = false, length = 100)
     private String fullAddress;
 
+    @Column(name = "night_price")
+    private Float nightPrice;
 }
