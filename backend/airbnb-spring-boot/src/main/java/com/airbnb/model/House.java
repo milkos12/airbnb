@@ -55,7 +55,6 @@ public class House {
     @Column(name = "full_address", nullable = false, length = 100)
     private String fullAddress;
 
-    18-new-column-for-price-per-night-for-each-house
     @Column(name = "night_price")
     private Float nightPrice;
 
