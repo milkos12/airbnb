@@ -1,12 +1,10 @@
 package com.airbnb.model;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.Calendar;
-import jakarta.validation.constraints.Min;
 
 @Entity
 @Table(name = "reservations")
