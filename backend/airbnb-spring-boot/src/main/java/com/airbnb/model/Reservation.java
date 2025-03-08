@@ -1,5 +1,6 @@
 package com.airbnb.model;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,7 +29,6 @@ public class Reservation{
     private Calendar departureDate;
 
     @Column(name = "number_of_guests", nullable = false)
-    @Min(1)
     private Integer numberOfGuests;
 
     @ManyToOne
