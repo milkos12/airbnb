@@ -1,7 +1,10 @@
 package com.airbnb.controller;
 
+import com.airbnb.dto.CreateHouseRequestDTO;
+import com.airbnb.dto.HouseResponseDTO;
 import com.airbnb.model.House;
 import com.airbnb.service.HouseService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,17 +20,17 @@ public class HouseController {
     }
 
     @GetMapping
-    public ResponseEntity<List<House>> getAllHouses() {
+    public ResponseEntity<List<HouseResponseDTO>> getAllHouses() {
         return null;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<House> getHouseById(@PathVariable Long id) {
+    public ResponseEntity<HouseResponseDTO> getHouseById(@PathVariable Long id) {
         return null;
     }
 
     @PostMapping
-    public ResponseEntity<House> createHouse(House house) {
+    public ResponseEntity<HouseResponseDTO> createHouse(@RequestBody @Valid CreateHouseRequestDTO createHouseRequestDTO) {
         return null;
     }
 
