@@ -57,11 +57,10 @@ public class House {
     public House() {}
 
     public House(
-            Long houseId, String name, User user, int guests, int rooms, int beds, int bathrooms, String city,
+            String name, User user, int guests, int rooms, int beds, int bathrooms, String city,
             String country, String coordinates, List<String> photos, String fullAddress, Float nightPrice,
             List<IncludedService> includedServices
     ) {
-        this.houseId = houseId;
         this.name = name;
         this.user = user;
         this.guests = guests;

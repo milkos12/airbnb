@@ -5,6 +5,7 @@ import com.airbnb.dto.HouseResponseDTO;
 import com.airbnb.model.House;
 import com.airbnb.service.HouseService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +32,7 @@ public class HouseController {
 
     @PostMapping
     public ResponseEntity<HouseResponseDTO> createHouse(@RequestBody @Valid CreateHouseRequestDTO createHouseRequestDTO) {
-        return null;
+        return new ResponseEntity<>(houseService.createHouse(createHouseRequestDTO), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
