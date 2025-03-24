@@ -2,10 +2,12 @@ package com.airbnb.mapper;
 
 import com.airbnb.dto.HouseResponseDTO;
 import com.airbnb.model.House;
+import org.springframework.stereotype.Service;
 
 /**
  * Mapper class for House entity, used to map House entity to DTOs and vice versa.
  */
+@Service
 public class HouseMapper {
     public HouseResponseDTO houseToHouseResponseDTO(House house) {
         return new HouseResponseDTO(

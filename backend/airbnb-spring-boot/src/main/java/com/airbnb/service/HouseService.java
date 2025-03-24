@@ -1,6 +1,7 @@
 package com.airbnb.service;
 
 import com.airbnb.dto.HouseResponseDTO;
+import com.airbnb.exception.HouseNotFoundException;
 import com.airbnb.mapper.HouseMapper;
 import com.airbnb.repository.HouseRepository;
 import org.springframework.stereotype.Service;
@@ -31,8 +32,15 @@ public class HouseService {
                 .toList();
     }
 
+    /**
+     * Get a house by its ID.
+     *
+     * @param id House ID
+     * @return HouseResponseDTO
+     * @throws HouseNotFoundException if the house is not found
+     */
     public HouseResponseDTO getHouseById(Long id) {
-        return houseMapper.houseToHouseResponseDTO(houseRepository.findById(id).orElseThrow(new HouseNotFoundException("Casa no encontrada con ID: " + id)));
+        return houseMapper.houseToHouseResponseDTO(houseRepository.findById(id).orElseThrow(() -> new HouseNotFoundException("Casa no encontrada con ID: " + id)));
     }
 
 }
