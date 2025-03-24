@@ -21,12 +21,12 @@ public class HouseController {
 
     @GetMapping
     public ResponseEntity<List<HouseResponseDTO>> getAllHouses() {
-        return null;
+        return ResponseEntity.ok(houseService.getAllHouses());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<HouseResponseDTO> getHouseById(@PathVariable Long id) {
-        return null;
+        return ResponseEntity.ok(houseService.getHouseById(id));
     }
 
     @PostMapping

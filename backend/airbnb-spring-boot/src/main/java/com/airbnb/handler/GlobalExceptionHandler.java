@@ -1,5 +1,6 @@
 package com.airbnb.handler;
 
+import com.airbnb.exception.HouseNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -41,4 +42,16 @@ public class GlobalExceptionHandler {
     private Map<String, List<String>> getErrorsMap(List<String> errors) {
         return Map.of("errors", errors);
     }
+
+    /**
+     * Handles HouseNotFoundException it occurs when a house is not found.
+     *
+     * @param ex HouseNotFoundException
+     * @return ResponseEntity with the error message
+     */
+    @ExceptionHandler(HouseNotFoundException.class)
+    public ResponseEntity<Map<String, String>> handleHouseNotFoundException(HouseNotFoundException ex) {
+        return new ResponseEntity<>(Map.of("message", ex.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
 }
