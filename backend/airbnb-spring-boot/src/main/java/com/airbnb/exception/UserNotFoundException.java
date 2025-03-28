@@ -1,7 +1,14 @@
 package com.airbnb.exception;
 
 public class UserNotFoundException extends RuntimeException {
-    public UserNotFoundException(String message) {
+    private final long userId;
+
+    public UserNotFoundException(String message, long userId) {
         super(message);
+        this.userId = userId;
+    }
+
+    public long getUserId() {
+        return userId;
     }
 }

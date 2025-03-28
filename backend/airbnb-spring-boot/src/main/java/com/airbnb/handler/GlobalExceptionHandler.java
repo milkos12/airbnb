@@ -46,16 +46,34 @@ public class GlobalExceptionHandler {
 
     /**
      * Handles HouseNotFoundException it occurs when a house is not found.
-     * Handles UserNotFoundException it occurs when a user is not found.
+     *
      * @param ex HouseNotFoundException
-     * @return ResponseEntity with the error message
+     * @return ResponseEntity with the RecordNotFoundResponse
      */
-    @ExceptionHandler(value = {
-            HouseNotFoundException.class,
-            UserNotFoundException.class
-    })
-    public ResponseEntity<Map<String, String>> handleHouseNotFoundException(HouseNotFoundException ex) {
-        return new ResponseEntity<>(Map.of("message", ex.getMessage()), HttpStatus.NOT_FOUND);
+    @ExceptionHandler(HouseNotFoundException.class)
+    public ResponseEntity<RecordNotFoundResponse> handleHouseNotFoundException(HouseNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new RecordNotFoundResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                "house",
+                ex.getHouseId(),
+                ex.getMessage()
+        ));
+    }
+
+    /**
+     * Handles UserNotFoundException it occurs when a user is not found.
+     *
+     * @param ex UserNotFoundException
+     * @return ResponseEntity with the RecordNotFoundResponse
+     */
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<RecordNotFoundResponse> handleUserNotFoundException(UserNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new RecordNotFoundResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                "user",
+                ex.getUserId(),
+                ex.getMessage()
+        ));
     }
 
 }

@@ -45,11 +45,13 @@ public class HouseService {
      * @throws HouseNotFoundException if the house is not found
      */
     public HouseResponseDTO getHouseById(Long id) {
-        return houseMapper.houseToHouseResponseDTO(houseRepository.findById(id).orElseThrow(() -> new HouseNotFoundException("Casa no encontrada con ID: " + id)));
+        return houseMapper.houseToHouseResponseDTO(houseRepository.findById(id)
+                .orElseThrow(() -> new HouseNotFoundException("Casa no encontrada con ID: " + id, id))
+        );
     }
 
     /**
-     * Create a house.
+     * Create a house using the CreateHouseRequestDTO.
      *
      * @param createHouseRequestDTO CreateHouseRequestDTO
      * @return HouseResponseDTO
@@ -57,7 +59,11 @@ public class HouseService {
      */
     public HouseResponseDTO createHouse(CreateHouseRequestDTO createHouseRequestDTO) {
         // Find the user by ID
-        User user = userService.findById(createHouseRequestDTO.userId()).orElseThrow(() -> new UserNotFoundException("Usuario no encontrado con ID: " + createHouseRequestDTO.userId()));
+        User user = userService.findById(createHouseRequestDTO.userId())
+                .orElseThrow(() -> new UserNotFoundException(
+                        "Usuario no encontrado con ID: " + createHouseRequestDTO.userId(),
+                        createHouseRequestDTO.userId())
+                );
         // Map the request DTO to a House entity
         House house = houseMapper.CreateHouseRequestDTOToHouse(createHouseRequestDTO, user);
         // Save the house
