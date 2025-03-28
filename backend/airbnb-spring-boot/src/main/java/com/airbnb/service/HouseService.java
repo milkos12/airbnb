@@ -65,4 +65,12 @@ public class HouseService {
         return houseMapper.houseToHouseResponseDTO(savedHouse);
     }
 
+    /**
+     * Delete a house by its ID.
+     * @param id House ID
+     */
+    public void deleteHouseById(Long id) {
+        houseRepository.deleteById(id);
+    }
+
 }

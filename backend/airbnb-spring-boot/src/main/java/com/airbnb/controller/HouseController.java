@@ -42,7 +42,8 @@ public class HouseController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteHouse(@PathVariable Long id) {
-        return null;
+        houseService.deleteHouseById(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
