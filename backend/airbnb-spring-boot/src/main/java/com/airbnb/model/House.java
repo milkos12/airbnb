@@ -1,7 +1,10 @@
 package com.airbnb.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.Calendar;
 import java.util.List;
 
 @Entity
@@ -53,6 +56,19 @@ public class House {
 
     @OneToMany(mappedBy = "house", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<IncludedService> includedServices;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
+    // Specifies that the field stores a timestamp (date and time)
+    @Temporal(TemporalType.TIMESTAMP)
+    // Automatically stores the creation timestamp when the entity is first persisted
+    @CreationTimestamp
+    private Calendar createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    // Automatically updates the timestamp every time the entity is modified
+    @UpdateTimestamp
+    private Calendar updatedAt;
 
     public House() {}
 
@@ -186,5 +202,13 @@ public class House {
 
     public void setIncludedServices(List<IncludedService> includedServices) {
         this.includedServices = includedServices;
+    }
+
+    public Calendar getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public Calendar getCreatedAt() {
+        return createdAt;
     }
 }
