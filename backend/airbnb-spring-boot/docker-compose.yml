@@ -22,7 +22,20 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
     volumes:
-      - postgres_volumen:/var/lib/postgresql/airbnbdata
+      - postgres_volumen:/var/lib/postgresql/data
+  pgadmin:
+      image: dpage/pgadmin4
+      restart: always
+      environment:
+          PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+          PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      ports:
+          - "5050:80"
+      depends_on:
+          - airbnb_db
+      volumes:
+        - pgadmin_volumen:/var/lib/pgadmin
 volumes:
+  pgadmin_volumen:
   postgres_volumen:
 
